@@ -1,0 +1,21 @@
+<h2><img class="avatar-small" src="<%= profileAvatar %>"> <%= profileusername %>  
+    <% if (!isOwnProfile) { %>
+      <% if (followStatus === 'Following') { %>
+        <form class="ml-2 d-inline" action="/removeFollow/<%= profileusername %>" method="POST">
+          <button class="btn btn-danger btn-sm">Stop Following <i class="fas fa-user-times"></i></button>
+        </form>
+      <% } else { %>
+        <form class="ml-2 d-inline" action="/addFollow/<%= profileusername %>" method="POST">
+          <button class="btn btn-primary btn-sm">Follow <i class="fas fa-user-plus"></i></button>
+        </form>
+      <% } %>
+    <% } %>
+    
+  </h2>
+    <h5><%= profileProfile %></h5>
+
+  <div class="profile-nav nav nav-tabs pt-2 mb-4">
+    <a href="/profile/<%=profileusername %>" class="profile-nav-link nav-item nav-link active">Posts</a>
+    <a href="/profile/<%=profileusername %>/followers" class="profile-nav-link nav-item nav-link ">Followers</a>
+    <a href="/profile/<%=profileusername %>/following" class="profile-nav-link nav-item nav-link ">Following</a>
+  </div>
